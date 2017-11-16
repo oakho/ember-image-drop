@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   placeholder: "",
   helpText: "Drop your image here, or click to select",
   hideTextOnImage: true,
+  accept: '.jpg, .jpeg, .png, .gif'
 
   image: null,
   file: null,
