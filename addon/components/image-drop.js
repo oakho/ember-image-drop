@@ -44,18 +44,8 @@ export default Ember.Component.extend({
     inputElement.unwrap();
   },
 
-  validateFilesize(filesize) {
-
-  },
-
   handleFileDrop(file) {
     if (file == null) {
-      return;
-    }
-
-    let validSize = validateFilesize(file);
-
-    if (!validSize) {
       return;
     }
 
