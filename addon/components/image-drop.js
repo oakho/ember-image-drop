@@ -8,10 +8,11 @@ export default Ember.Component.extend({
   placeholder: "",
   helpText: "Drop your image here, or click to select",
   hideTextOnImage: true,
-  accept: '.jpg, .jpeg, .png, .gif',
+  accept: '.jpg, .jpeg, .png, .gif, image/png, image/jpg, image/jpeg, image/gif',
 
   image: null,
   file: null,
+  maxFilesize: 1024 * 1024 * 3,
 
   textStyle: Ember.computed('image', function() {
     let textStyle = "";
@@ -43,8 +44,18 @@ export default Ember.Component.extend({
     inputElement.unwrap();
   },
 
+  validateFilesize(filesize) {
+
+  },
+
   handleFileDrop(file) {
     if (file == null) {
+      return;
+    }
+
+    let validSize = validateFilesize(file);
+
+    if (!validSize) {
       return;
     }
 
