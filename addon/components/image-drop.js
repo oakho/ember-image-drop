@@ -45,7 +45,7 @@ export default Ember.Component.extend({
   },
 
   handleFileDrop(file) {
-    if (file == null) {
+    if (file == null || !this.accept.split(', ').includes(file.type)) {
       return;
     }
 
@@ -67,7 +67,6 @@ export default Ember.Component.extend({
     }
 
     let imageUrl = event.dataTransfer.getData('URL');
-
     if (!imageUrl) {
       return;
     }
